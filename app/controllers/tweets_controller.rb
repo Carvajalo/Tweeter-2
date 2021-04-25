@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
     before_action :authenticate_user!
+    before_action :get_tweet, only: [:show, :destroy]
 
     def index
         #@tweets = Tweet.where(user_id: current_user.id)
@@ -8,7 +9,6 @@ class TweetsController < ApplicationController
     end
 
     def show
-        @tweet = Tweet.find(params[:id])
     end
 
     def new
@@ -44,7 +44,6 @@ class TweetsController < ApplicationController
     end
 
     def destroy
-        @tweet = Tweet.find(params[:id])
         @tweet.destroy
         redirect_to tweets_path, notice: "¡Tweet deleted!:D"
     end
@@ -54,4 +53,9 @@ class TweetsController < ApplicationController
     def tweet_params
         params.require(:tweet).permit(:text)
     end
+
+    def get_tweet
+        @tweet = Tweet.find(params[:id])
+    end
+
 end
