@@ -20,7 +20,14 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+  #Si se daña, volver a poner esto: 
+  #  database: db/production.sqlite3
+  #Si no sale, quitar esto: 
+  # pool: 5
+  # timeout: 5000
 production:
   adapter: postgresql
   encoding: unicode
-  database: db/production.sqlite3
+  database: Tweeter_database_production
+  pool: 5
+  timeout: 5000
