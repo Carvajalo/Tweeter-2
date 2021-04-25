@@ -2,7 +2,9 @@ class TweetsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @tweets = Tweet.all
+        #@tweets = Tweet.where(user_id: current_user.id)
+        #@tweets = Tweet.all
+        @tweets = current_user.tweets
     end
 
     def show
