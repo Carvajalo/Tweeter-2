@@ -14,8 +14,14 @@ class TweetsController < ApplicationController
 
     end
 
+
+    # t.text "text"
+    # t.string "username"
+    # t.integer "user_id"
     def create
         @tweet = Tweet.new(tweet_params)
+        @tweet.user_id = current_user.id
+        @tweet.username = current_user.username
         if @tweet.save
             redirect_to tweets_path, notice: "¡Tweet posted!:D"
         else
@@ -30,8 +36,7 @@ class TweetsController < ApplicationController
             
         end
 
-        # @tweet.username = current_user.username
-        # @tweet.user_id = current_user.id
+      
 
 
     end

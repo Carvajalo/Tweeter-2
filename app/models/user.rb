@@ -4,6 +4,8 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   
+  #relations
+  has_many :tweets
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

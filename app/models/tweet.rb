@@ -5,6 +5,7 @@ class Tweet < ApplicationRecord
 
 
     #Relations
+    belongs_to :user
 
     #Restrictions
 
