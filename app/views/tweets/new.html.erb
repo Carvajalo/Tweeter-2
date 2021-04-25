@@ -1,0 +1,9 @@
+<h2> New Tweet </h2>
+
+<%= form_with(model: Tweet, local: true) do |f| %>
+    <b><%= f.label :text %></b>
+    <%= f.text_area :text, size: "70x5" %>
+    <%= f.submit "Tweet"%>
+<% end %>
+
+<%= link_to('Cancel', tweets_path)%>

@@ -1,7 +1,13 @@
 <h1> Tweet Index  </h1>
 
 <% @tweets.each do |tweet| %>
+    <p><%= tweet.text %> <%= link_to('View Tweet', tweet_path(tweet.id))%> <br/> <%= ("@" + tweet.username) if tweet.username != nil %> <%= link_to('Delete', tweet_path(tweet.id), method: :delete, data: {confirm: "Are you SURE?"})%> </p>
 
-    <h3><%= tweet.text %></h3>
 
 <% end %>
+<h2></h2>
+<b>  ------------------------- </b>
+<br/>
+<div>
+    <%= link_to('new Tweet', new_tweet_path)%>
+</div>

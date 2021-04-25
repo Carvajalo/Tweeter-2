@@ -1,0 +1,16 @@
+<h2> Tweet details </h2>
+
+<h1>--------------------------------------</h1>
+
+<label>Tweet:</label>
+<h1></h1>
+<b><%= @tweet.text %></b>
+<h1></h1>
+<label>Username:</label>
+<b><%= ("@" + @tweet.username) if @tweet.username != nil %></b>
+
+<h3></h3>
+<b2><%= @tweet.created_at %></b2>
+<h1>--------------------------------------</h1>
+
+<%= link_to('return', tweets_path)%>
