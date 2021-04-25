@@ -129,6 +129,6 @@ Rails.application.configure do
   authentication:       'plain',
   enable_starttls_auto: true }
 
-  config.action_mailer.default_url_options = { 'https://tueter.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'https://tueter.herokuapp.com/' }
 
 end
