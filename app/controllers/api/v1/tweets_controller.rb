@@ -6,7 +6,7 @@ module Api
             #GET api/v1/tweets
             def index
                 #@tweets = Tweet.where(user_id: current_user.id)
-                @tweets = current_user.tasks
+                @tweets = current_user.tweets
                 render json: @tweets
 
                 #@tweets = current_user.tweets
