@@ -5,6 +5,7 @@ module Api
             skip_before_action :verify_authenticity_token
             before_action :configure_permitted_parameters, if: :devise_controller?
             before_action :basic_auth
+            rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
             #GET :3000/api/v1/tweets/:id -a gmail@gmail.com:password
             def basic_auth
@@ -24,6 +25,10 @@ module Api
                 @current_user
             end
 
+
+            def render_404
+                render json: { error: "Tweet not found", status: 404 }
+            end
 
             protected
             def configure_permitted_parameters
