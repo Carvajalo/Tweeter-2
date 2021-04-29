@@ -7,7 +7,7 @@ RSpec.describe TweetsController, "#create" do
     end
   end
 
-  context "When a task is saved with valid params" do
+  context "When a task is saved with valid params and User is logged in" do
     let(:user) { create(:user)}
     before do 
     sign_in(user)
@@ -22,9 +22,35 @@ RSpec.describe TweetsController, "#create" do
       expect(Tweet.last.text).to eq("Test in rspec")
     end
 
-
-
+    
+    it "Should redirect User to Tweet index" do
+      expect(subject).to redirect_to(tweets_path)
+    end
   end
+
+  
+  context "When a task is saved with valid params and User is not logged in" do
+    let(:user) { create(:user)}
+    before do 
+    #sign_in(user)
+    post :create, params: {tweet: { text: "Test in rspec",
+                                    user_id: user.id,
+                                    username: user.username
+                                  }
+                          }
+    end
+
+    it "Should not be save on DB and render an error" do
+      expect(Tweet.last).to eq nil
+    end
+
+    it "Should redirect User to login path" do
+      expect(subject).to redirect_to(new_user_session_path)
+    end
+  end
+
+
+  
 end
 
 
