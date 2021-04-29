@@ -10,5 +10,9 @@ RSpec.describe Tweet, type: :model do
   pending "Pending example"
 end
 
+RSpec.describe Tweet, type: :model do
+  it { should belong_to(:user).class_name('User') }
+end
+
 
 
