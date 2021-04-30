@@ -1,6 +1,8 @@
 class Tweet < ApplicationRecord
     #Validations
     validates :text, presence: true
+    validates :username, presence: true
+    validates :user_id, presence: true
     validates :text, length: { maximum: 280 }
 
 

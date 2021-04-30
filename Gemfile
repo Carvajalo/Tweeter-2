@@ -38,6 +38,16 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+
+  gem 'rexml'
+
+  gem 'rspec-rails', '~> 4.0.1'
+
+  gem 'shoulda-matchers', '~> 4.0'
+
+  gem 'factory_bot_rails'
+
+  gem 'simplecov', require: false
 end
 
 group :development do
