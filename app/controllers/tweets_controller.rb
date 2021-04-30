@@ -4,8 +4,8 @@ class TweetsController < ApplicationController
 
     def index
         #@tweets = Tweet.where(user_id: current_user.id)
-        #@tweets = Tweet.all
-        @tweets = current_user.tweets
+        @tweets = Tweet.all
+        #@tweets = current_user.tweets
     end
 
     def show

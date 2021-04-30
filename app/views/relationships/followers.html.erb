@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #008CBA;
+}
+
+</style>    
+</head>
+<body>
+
+<h2>Followers</h2>
+<h1>--------------------------------------</h1>
+<h1></h1>
+<div>
+    <% @user.user_followers.each do |f| %>
+    <h1>--------------------------------------</h1>
+        <p>Nombre: <%=f.follower.name%></p>
+        <p><%= "Username: @" + f.follower.username if f.follower.username != nil %>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+        <% if user_signed_in? %>
+            <% if current_user.followers.include?(f) %>
+                <%= button_to "Unfollow", relationship_path(id: f.following.id), method: :delete, :class => "button" %>
+            <%end%>
+        <%end%>
+    <% end %>
+
+  
+
+</div>
+
+<h1>--------------------------------------</h1>
+
+<%= link_to('return', tweets_path)%>
