@@ -25,6 +25,7 @@ module Api
             #POST /api/v1/tweets
             #params(text: "", username: "", user_id: "")
             def create
+                
                  @tweet = Tweet.new(tweet_params)
                 # @tweet.user_id = current_user.id
                 @tweet.user_id = User.first.id

@@ -29,7 +29,7 @@ RSpec.describe TweetsController, "#create" do
   end
 
   
-  context "When a task is saved with valid params and User is not logged in" do
+  context "When a tweet is saved with valid params and User is not logged in" do
     let(:user) { create(:user)}
     before do 
     #sign_in(user)

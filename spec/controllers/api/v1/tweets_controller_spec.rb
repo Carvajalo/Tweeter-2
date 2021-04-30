@@ -38,6 +38,7 @@ RSpec.describe Api::V1::TweetsController, '#show' do
         #JSON.parse(response.body)
         #JSON.parse(response.body)["error"]
         it "Should return Tweet in JSON body" do
+            
             json_response = JSON.parse(response.body)
             expect(json_response["error"]).to match("Tweet not found")
         end
