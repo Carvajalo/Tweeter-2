@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::TweetsController, '#show' do
-    let(:user) {create(:user)}
-    #let(:tweet) { FactoryGirl.create(:user) }
-    let(:tweet) {create(:tweet, username: user.username, user_id: user.id)}
-
 
     context "When tweet exist" do
+        let(:user) {create(:user)}
+        #let(:tweet) { FactoryGirl.create(:user) }
+        let(:tweet) {create(:tweet, username: user.username, user_id: user.id)}
         before do
             get :show, params: {id: tweet.id}
         end
@@ -16,7 +15,6 @@ RSpec.describe Api::V1::TweetsController, '#show' do
         end
 
         it "Should return Tweet in JSON body" do
-            byebug
             json_response = JSON.parse(response.body)
             expect(json_response.keys).to match_array(["id", "text", "username", "user_id", "created_at", "updated_at"])
             # expect(json_response)
@@ -25,6 +23,27 @@ RSpec.describe Api::V1::TweetsController, '#show' do
         end
 
     end
+ 
+    context "When tweet does not exist" do
+        before do
+            get :show, params: {id: 999999}
+        end
+
+        it "Should returns HTTP 404 code" do
+            json_response = JSON.parse(response.body)
+            expect(json_response["status"]).to match(404)
+        end
+
+        #response.body
+        #JSON.parse(response.body)
+        #JSON.parse(response.body)["error"]
+        it "Should return Tweet in JSON body" do
+            json_response = JSON.parse(response.body)
+            expect(json_response["error"]).to match("Tweet not found")
+        end
+
+    end
+
 
 
   
