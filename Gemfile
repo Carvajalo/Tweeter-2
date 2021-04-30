@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+
+
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
 
 group :production do
@@ -38,6 +40,14 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+  #test
+  gem 'rexml'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'shoulda-matchers', '~> 4.0'
+  gem 'factory_bot_rails'
+  gem 'simplecov', require: false
+  
+
 end
 
 group :development do

@@ -15,8 +15,12 @@ module Api
             #GET api/v1/tweets/:id
             def show
                 render json: @tweet
+                # if tweet
+                #     render json: @tweet
+                # else
+                #     render json: {error: 'Tweet not found', status: 404}
+                # end
             end
-
         
             #POST /api/v1/tweets
             #params(text: "", username: "", user_id: "")
