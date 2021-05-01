@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :relationship do
-    follower_id { 1 }
-    followed_id { 1 }
+    sequence(:id) { |n| }
+    created_at { Time.now }
+    updated_at { Time.now }
   end
 end

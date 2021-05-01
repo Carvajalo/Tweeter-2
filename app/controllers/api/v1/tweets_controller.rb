@@ -45,8 +45,8 @@ module Api
             def destroy
                 @tweet.destroy
                 #Destruir el tweet y no hacer nada: 
-                head :no_content
-
+                #head :no_content
+                render json: {response: "Tweet deleted"}, status: 200
             end
         
             private
