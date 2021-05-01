@@ -12,8 +12,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tweets, only: [:index, :show, :create, :destroy]
-      post 'sign_up/', to: 'users#create'
-      post 'sign_in/', to: 'users#login'
+      resources :relationships, only: [:destroy]
+      post 'sign_up', to: 'users#create'
+      post 'sign_in', to: 'users#login'
+      post 'relationship', to: 'relationships#create'
+      get 'follower', to: 'relationships#follower'
+      get 'following', to: 'relationships#following'
+
+
     end
   end
 

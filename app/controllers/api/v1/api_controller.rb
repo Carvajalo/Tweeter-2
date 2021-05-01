@@ -5,8 +5,13 @@ module Api
             skip_before_action :verify_authenticity_token
             before_action :configure_permitted_parameters, if: :devise_controller?
             before_action :basic_auth
-            rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
+
+            rescue_from ActiveRecord::RecordNotFound, with: :render_404
+            rescue_from ActionController::RoutingError, with: :render_404
+            rescue_from ActionController::InvalidAuthenticityToken, with: :render_404
+
+            
             #GET :3000/api/v1/tweets/:id -a gmail@gmail.com:password
             def basic_auth
                 #params[:name, :username, :email, :password, #:confirmationpassword#]
