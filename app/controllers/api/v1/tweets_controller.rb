@@ -33,14 +33,11 @@ module Api
                     render json: @tweet, status: :ok
                 #     redirect_to tweets_path, notice: "¡Tweet posted!:D"
                 else
-          
                     message_error = " "
                     @tweet.errors.full_messages.each do |error|
                         message_error = message_error + " " + error
                     end
-        
                     render error: {error: "message_error", status: 400}
-                    
                  end
             end
         
